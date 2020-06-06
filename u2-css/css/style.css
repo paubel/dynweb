@@ -1,0 +1,223 @@
+/* lägg egen css här */
+/*För betyget Godkänt
+Du ska skapa en genomtänkt, övergripande och välgjord design och layout som passar för innehållet vad gäller färg, typografi, design, layout
+
+Sidan ska vara byggd med responsiv design som utnyttjar skärmutrymme och ser bra ut för alla bredder på viewport mellan 640px och 1280px. Du ska använda genomtänkta kombinationer av media queries, breakpoints och/eller fr, vw, % med grid och flexbox
+
+Du ska använda dig av en css global reset (t ex Eric Meyers global reset)
+
+Du ska använda något eller några externa typsnitt som passar för innehållet
+
+
+
+Du får INTE modifiera HTML-koden under body-taggen, den enda ändring som får göras i html-filen är att länka till externa typsnitt under head.
+
+Ni ska se till att CSS-filen validerar korrekt enligt W3C standarden (https://jigsaw.w3.org/css-validator/ (Länkar till en externa sida.))
+
+Uppgift
+Utifrån ett färdigt HTML-dokument (och utan att ändra i koden) bygga en design för en responsiv webbsida med CSS-tekniker.
+
+Uppgiften liknar de övningar om Black Goose Bakery som finns i kursboken och har du gjorrt dem så bör du vara väl förberedd för att bygga design även för denna sida.
+
+Till ert förfogande har ni i zippen Material CSS (se ovan)
+
+Mappstruktur med HTML-filen
+-------------
+Jag tittade på en sida som hade förslag på olika surffonter. https://hyperpix.net/fonts/surf-fonts/. Därefter försökte jag hitta två fonter som passade på Google fonts
+
+https://fonts.google.com/?sort=popularity&query=wave
+
+font-family: 'Knewave', cursive;
+font-family: 'Titillium Web', sans-serif;
+
+https://www.w3schools.com/colors/colors_picker.asp?colorhex=00bfff
+
+https://www.webfx.com/blog/web-design/responsive-background-image/
+
+*/
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  background-image: url(https://images.unsplash.com/photo-1533677843932-8049bb1b2a7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #b3ecff;
+}
+
+h1, h2, h3 {
+  font-family: 'Knewave', cursive;
+}
+
+img {
+  width: 100%;
+  padding: 1vw;
+  background-size: cover;
+}
+
+#container {
+  background-color: rgba(0, 191, 255, 0.5);
+  border: 4mm groove rgba(0, 191, 255, .6);
+  border-radius: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1vw;
+  position: relative;
+}
+
+main {
+  background-color: rgba(51, 204, 255, 0.5);
+  border-radius: 20px;
+  margin-right: 1vw;
+}
+
+aside {
+  background-color: rgba(51, 204, 255, 0.5);
+  padding-left: 1vw;
+  border-radius: 20px;
+}
+
+footer {
+  background-color: rgba(51, 204, 255, 0.5);
+  padding-left: 1vw;
+  border-radius: 20px;
+  margin-top: 1vh;
+}
+
+#products, #classes, #story {
+  margin: 0 1vw;
+}
+
+nav {
+  grid-area: nav;
+  background-color: #33ccff;
+  border-radius: 20px;
+  margin-bottom: 1vh;
+}
+
+/* nav style START*/
+nav li {
+  display: inline-flex;
+  color: #f2f2f2;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+nav li a:link, nav li a:visited {
+  padding: 0 5px;
+  background-color: #007399;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #b3ecff;
+  color: black;
+}
+
+nav li a:active {
+  background-color: #b3ecff;
+  color: white;
+}
+
+@media screen and (min-width: 600px) {
+  #container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main main"
+      "aside aside"
+      "footer footer";
+  }
+
+  header {
+    grid-area: header;
+    /*background-color: 33ccff;*/
+  }
+
+  a:link, a:visited {
+    text-decoration: none;
+    color: #007399;
+  }
+
+  a:hover {
+    background-color: #b3ecff;
+    text-decoration: underline;
+  }
+
+  a:active {
+    color: white;
+  }
+
+  /* nav style END*/
+  main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #products {
+    grid-column: 1/2;
+  }
+
+  #classes {
+    grid-column: 1/3;
+    grid-row: 2;
+  }
+
+  #story {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+
+  aside {
+    grid-area: aside;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+  nav {
+    grid-area: nav;
+  }
+
+  /* nav style START*/
+  nav li {
+    display: inline;
+  }
+
+  nav li a:link, nav li a:visited {}
+
+  nav li a:hover {}
+
+  nav li a:active {}
+}
+
+@media screen and (min-width: 1160px) {
+  #container {
+    /*display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 2fr 1fr;*/
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main aside"
+      "footer footer";
+  }
+}
